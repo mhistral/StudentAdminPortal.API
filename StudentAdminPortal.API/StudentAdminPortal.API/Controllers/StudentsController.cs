@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StudentAdminPortal.API.Domain_Models;
 using StudentAdminPortal.API.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StudentAdminPortal.API.Controllers
 {
@@ -20,9 +21,9 @@ namespace StudentAdminPortal.API.Controllers
 
         [HttpGet]
         [Route("[controller]")]
-        public IActionResult GetAllStudents()
+        public async Task<IActionResult> GetAllStudents()
         {
-            var students = (studentRepository.GetStudents());
+            var students = await studentRepository.GetStudentsAsync();
 
             mapper.Map<List<Student>>(students);
 
