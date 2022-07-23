@@ -46,5 +46,24 @@ namespace StudentAdminPortal.API.Controllers
 
             return Ok(mapper.Map<Student>(student));
         }
+
+        [HttpPut]
+        [Route("[controller]/{studentId:guid}")]
+        public async Task<IActionResult> UpdateStudentAsyc([FromRoute] Guid studentId, [FromBody] UpdateStudentRequest request)
+        {
+            // check if the studentId Exists
+            if (await studentRepository.Exists(studentId))
+            {
+
+                //update details
+                var updatedStudent = await studentRepository.UpdateStudent(studentId, mapper.Map<DataModels.Student>(request));
+
+                if (updatedStudent != null)
+                {
+                    return Ok(mapper.Map<Student>(updatedStudent));
+                }
+            }
+            return NotFound();
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace StudentAdminPortal.API.DataModels
         public string PhysicalAddress { get; set; }
         public string PostalAddress { get; set; }
 
-        //Navigartion Property
+        //Navigation Property
         public Guid StudentId { get; set; }
     }
 }
