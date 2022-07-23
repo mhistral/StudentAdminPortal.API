@@ -54,6 +54,7 @@ namespace StudentAdminPortal.API.Repositories
                 existingStudent.Mobile = request.Mobile;
                 existingStudent.GenderId = request.GenderId;
                 existingStudent.Address.PhysicalAddress = request.Address.PhysicalAddress;
+                existingStudent.Address.PostalAddress = request.Address.PostalAddress;
                 existingStudent.GenderId = request.GenderId;
 
                 await context.SaveChangesAsync();
